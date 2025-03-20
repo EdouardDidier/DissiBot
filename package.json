@@ -1,0 +1,22 @@
+{
+  "name": "dissibot",
+  "version": "1.0.0",
+  "description": "Personal music bot for Discord",
+  "main": "dissibot.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Zeddydy",
+  "license": "ISC",
+  "dependencies": {
+    "@discordjs/opus": "^0.1.0",
+    "discord.js": "^11.6.4",
+    "dotenv": "^16.4.7",
+    "ffmpeg-static": "^4.2.7",
+    "fluent-ffmpeg": "^2.1.2",
+    "promise": "^8.1.0",
+    "typescript-language-server": "^4.3.4",
+    "youtube-search": "^1.1.4",
+    "ytdl-core": "^2.1.7"
+  }
+}
