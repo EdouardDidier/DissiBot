@@ -30,9 +30,12 @@ npm install
 ```
 - Create a Discord App, add it to your server and obtain your private Discord token (see this [link](https://discordjs.guide/preparations/setting-up-a-bot-application.html#creating-your-bot))
 
-- Create a ".env" file in the project folder and add your private token: 
+- Obtain a YouTube API token (see this [link](https://developers.google.com/youtube/v3/getting-started?hl=fr))
+
+- Create a ".env" file in the project folder and add your private tokens: 
 ```d
 DISCORD_API_TOKEN="<your_token_here>"
+YOUTUBE_API_TOKEN="<your_token_here>"
 ```
 
 - You can now run the bot:  
