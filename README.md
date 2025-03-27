@@ -30,7 +30,7 @@ npm install
 ```
 - Create a Discord App, add it to your server and obtain your private Discord token (see this [link](https://discordjs.guide/preparations/setting-up-a-bot-application.html#creating-your-bot))
 
-- Obtain a YouTube API token (see this [link](https://developers.google.com/youtube/v3/getting-started?hl=fr))
+- Obtain a YouTube API token (see this [link](https://developers.google.com/youtube/v3/getting-started?hl=en))
 
 - Create a ".env" file in the project folder and add your private tokens: 
 ```d
