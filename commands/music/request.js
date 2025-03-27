@@ -1,26 +1,27 @@
-var Promise = require('promise');
+require("dotenv").config();
 
-const ytdl = require('ytdl-core');
-const search = require('youtube-search');
+var Promise = require("promise");
 
-const Command = require('../command.js');
-const SongInfo = require('../../musicplayer/songInfo.js');
+const ytdl = require("ytdl-core");
+const search = require("youtube-search");
+
+const Command = require("../command.js");
+const SongInfo = require("../../musicplayer/songInfo.js");
 
 const searchOpts = {
   maxResults: 5,
-  //key: 'AIzaSyBOWfmXrT8qE3gzBQo62pQwZdVUQbiSpD0'
-  key: 'AIzaSyAweN0hql3psf--NT84VcdJ5X971j7sLh8'
+  key: process.env.DISCORD_API_TOKEN,
 };
 
 module.exports = class Request extends Command {
   constructor(commandManager) {
     let infos = {
-      name:'request',
+      name: "request",
       group: Constants.group.music,
       description: `Ajoute une musique à la playlist.`,
-      example: ['<URL>', '<Mots Clés>'],
-      nbArgsMin: 1
-    }
+      example: ["<URL>", "<Mots Clés>"],
+      nbArgsMin: 1,
+    };
 
     super(commandManager, infos);
   }
@@ -32,31 +33,41 @@ module.exports = class Request extends Command {
 
       if (args[0].startsWith("http") && args.length == 1) {
         this.makeRequest(msg, musicPlayer, args[0]);
-      }
-      else if ((args[0].startsWith("http") && args.length != 1) || args.length < 1) {
+      } else if (
+        (args[0].startsWith("http") && args.length != 1) ||
+        args.length < 1
+      ) {
         MessageManager.create()
           .setColor(Constants.color.error)
           .setTitle(Constants.title.music)
-          .setMessage(`Saisie incorrecte, essayez **${Constants.prefix}help request** pour plus d'informations`)
+          .setMessage(
+            `Saisie incorrecte, essayez **${Constants.prefix}help request** pour plus d'informations`,
+          )
           .send(msg.channel);
 
         return;
       } else {
-        var str = '';
-        args.forEach(a => {str += a + ' '});
+        var str = "";
+        args.forEach((a) => {
+          str += a + " ";
+        });
 
-        search(str, searchOpts, function(err, results) {
-          if(err) return console.log(err);
+        search(
+          str,
+          searchOpts,
+          function (err, results) {
+            if (err) return console.log(err);
 
-          var url = '';
-          let i = -1;
-          do {
-            i++;
-            url = results[i].link;
-          } while (i < results.length && results[i].kind != 'youtube#video');
+            var url = "";
+            let i = -1;
+            do {
+              i++;
+              url = results[i].link;
+            } while (i < results.length && results[i].kind != "youtube#video");
 
-          this.makeRequest(msg, musicPlayer, url);
-        }.bind(this));
+            this.makeRequest(msg, musicPlayer, url);
+          }.bind(this),
+        );
       }
       resolve();
     });
@@ -68,7 +79,9 @@ module.exports = class Request extends Command {
         MessageManager.create()
           .setColor(Constants.color.error)
           .setTitle(Constants.title.music)
-          .setMessage(`Impossible de trouver une musique correspondant à votre requête`)
+          .setMessage(
+            `Impossible de trouver une musique correspondant à votre requête`,
+          )
           .send(msg.channel);
 
         console.log(err);
@@ -81,9 +94,10 @@ module.exports = class Request extends Command {
       //TODO: Check url / research is valid
 
       musicPlayer.addRequest(msg.channel, request);
-      if (!musicPlayer.isConnected()) { //Check if the bot is not connected to a voiceChannel
+      if (!musicPlayer.isConnected()) {
+        //Check if the bot is not connected to a voiceChannel
         musicPlayer.join(msg);
       }
     });
   }
-}
+};
