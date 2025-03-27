@@ -7,10 +7,10 @@ A music bot that stream music from YouTube to voice chat.
 Users can request songs to the bot via fuzzy search or direct YouTube link using the command `!request`. The bot will then join the channel and start broadcast requested music.
 Music can be add or remove to the playlist. The bot can display information on the playlist and the song being played. Once the the end of the playlist is reached, the bot will disconnect from the channel.
 
-Users can obtain the list of avalaible commands with the `!help` command :
+Users can obtain the list of avalaible commands with the `!help` command :  
 ![](docs/ExampleHelp.png)
 
-_Example of interaction with the bot :_
+_Example of interaction with the bot :_  
 ![](docs/Example.png)
 
 ## Dependencies
