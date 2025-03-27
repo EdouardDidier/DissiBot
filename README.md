@@ -1,16 +1,16 @@
 # DissiBot
 
-A music bot that stream music from YouTube to voice chat.
+A music bot that streams music from YouTube to voice chat.
 
 ## Presentation
 
 Users can request songs to the bot via fuzzy search or direct YouTube link using the command `!request`. The bot will then join the channel and start broadcast requested music.
-Music can be add or remove to the playlist. The bot can display information on the playlist and the song being played. Once the the end of the playlist is reached, the bot will disconnect from the channel.
+Music can be added or remove to the playlist. The bot can display information on the playlist and the song being played. Once the end of the playlist is reached, the bot will disconnect from the channel.
 
-Users can obtain the list of avalaible commands with the `!help` command :  
+Users can obtain the list of available commands with the `!help` command:  
 ![](docs/ExampleHelp.png)
 
-_Example of interaction with the bot :_  
+_Example of interaction with the bot:_  
 ![](docs/Example.png)
 
 ## Dependencies
@@ -24,18 +24,18 @@ _Example of interaction with the bot :_
 
 ## Setup and run instructions
 
-- Install all packages by running :
+- Install all packages by running:
 ```bash
 npm install
 ```
 - Create a Discord App, add it to your server and obtain your private Discord token (see this [link](https://discordjs.guide/preparations/setting-up-a-bot-application.html#creating-your-bot))
 
-- Create a ".env" file in the project folder and add your private token : 
+- Create a ".env" file in the project folder and add your private token: 
 ```d
 DISCORD_API_TOKEN="<your_token_here>"
 ```
 
-- You can now run the bot :  
+- You can now run the bot:  
 ```bash
 node dissibot.js
 ```
